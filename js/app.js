@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       body: JSON.stringify(data)
     })
-    .then(res => res.json())
+    .then(res => res.text())
     .then(() => {
       alert("Pengajuan Cuti Berhasil Dikirim!");
       form.reset();
