@@ -76,9 +76,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     fetch("https://script.google.com/macros/s/AKfycbyEzWVoPABcgp9gnI2qO7t0XXuoD8-RgsusRsUzCNTK-XUiEsLlQn08aLEWT2eWc5pt/exec", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
       body: JSON.stringify(data)
     })
     .then(res => res.text())
