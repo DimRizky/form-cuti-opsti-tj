@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.getElementById("formId").value = formId;
   document.getElementById("todayDate").value =
-    now.toISOString().split("T")[0];
+  formatDDMMYYYY(new Date());
 
   const form = document.getElementById("cutiForm");
 
