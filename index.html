@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Formulir Pengajuan Cuti</title>
-  <link rel="icon" type="image/png" href="faviconopti.png">
+  <link rel="icon" type="image/png" href="assets/faviconopti.png">
   <style>
     :root {
       --primary: #0a1f44;
@@ -160,7 +160,7 @@
 <body>
   <div class="container">
   <div class="logo-wrapper">
-  <img src="logo_tj.png" alt="Logo Transjakarta" class="logo" />
+  <img src="assets/logo_tj.png" alt="Logo Transjakarta" class="logo" />
 </div>
     <h1>Formulir Pengajuan Cuti</h1>
     <h3>Operasional Perangkat TI</h3>
@@ -171,30 +171,27 @@
         <div class="grid">
           <div>
             <label>Form ID</label>
-            <input type="text" id="formId" readonly />
+            <input id="formId" readonly placeholder="Auto Generate by System"/>
           </div>
           <div>
             <label>Tanggal Pengajuan</label>
-            <input type="date" id="todayDate" readonly />
+            <input id="todayDate" readonly>
           </div>
           <div>
             <label>NIK Karyawan</label>
-            <input type="text" id="nik" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" placeholder="6 Digit NIK" required>
+            <input id="nik" required>
           </div>
           <div>
             <label>Nama Lengkap</label>
-            <input type="text" id="nama"
-            placeholder="" required />
+            <input id="nama" required>
           </div>
           <div>
             <label>Nomor Handphone</label>
-            <input type="tel" id="hp" inputmode="numeric" pattern=
-            "[0-9]{10,13}" maxlength="13" placeholder=""
-            required/>
+            <input id="hp" required>
           </div>
           <div>
             <label>Alamat Email</label>
-            <input type="email" id="email" required />
+            <input type="email" id="email" required>
           </div>
         </div>
       </fieldset>
@@ -204,20 +201,19 @@
         <div class="grid">
         <div>
             <label>Jumlah Hari Cuti</label>
-            <input type="number" id="jumlah" min="1" max="5"
-            placeholder="" required >
+            <input type="number" id="jumlah" min="1" max="5" required>
          </div>   
         <div>
             <label>Tanggal Mulai Cuti</label>
-            <input id="mulai" type="date" required />
+            <input id="mulai" type="date" required>
           </div>
           <div>
             <label>Tanggal Akhir Cuti</label>
-            <input id="akhir" type="date" required />
+            <input id="akhir" type="date" required>
           </div>
           <div>
             <label>Tanggal Kembali Bekerja</label>
-            <input id="kembali" type="date" required />
+            <input id="kembali" type="date" required>
           </div>
           <div style="grid-column: 1 / -1;">
             <label>Alasan Cuti</label>
@@ -284,61 +280,6 @@
     </form>
   </div>
 
-  <script>
-    // Generate Form ID sederhana berbasis timestamp
-    function pad(num) {
-    return num.toString().padStart(2, "0");
-  }
-
-  const now = new Date();
-
-  const formId =
-    "CTOPTI-" +
-    now.getFullYear() +
-    pad(now.getHours()) +
-    pad(now.getMinutes()) +
-    pad(now.getSeconds());
-    
-  document.getElementById("formId").value = formId;
-
-  // Set tanggal pengajuan
-  document.getElementById("todayDate").value =
-    now.toISOString().split("T")[0];
-    
-  const form = document.getElementById("cutiForm");
-
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    const data = {
-      formId: document.getElementById("formId").value,
-      tanggal: document.getElementById("todayDate").value,
-      nik: document.getElementById("nik").value,
-      nama: document.getElementById("nama").value,
-      hp: document.getElementById("hp").value,
-      email: document.getElementById("email").value,
-      jumlah: document.getElementById("jumlah").value,
-      mulai: document.getElementById("mulai").value,
-      akhir: document.getElementById("akhir").value,
-      kembali: document.getElementById("kembali").value,
-      alasan: document.getElementById("alasan").value,
-      atasan1: document.getElementById("atasan1").value,
-      atasan2: document.getElementById("atasan2").value
-    };
-    
-    fetch("https://script.google.com/macros/s/AKfycbyEzWVoPABcgp9gnI2qO7t0XXuoD8-RgsusRsUzCNTK-XUiEsLlQn08aLEWT2eWc5pt/exec", {
-      method: "POST",
-      body: JSON.stringify(data)
-    })
-    .then(res => res.json())
-    .then(() => {
-      alert("Pengajuan cuti berhasil dikirim");
-      form.reset();
-    })
-    .catch(() => {
-      alert("Terjadi kesalahan. Silakan coba lagi.");
-    });
-  });
-</script>
+  <script src="js/app.js"></script>
 </body>
 </html>
