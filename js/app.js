@@ -3,6 +3,15 @@ document.addEventListener("DOMContentLoaded", () => {
   function pad(num) {
     return num.toString().padStart(2, "0");
   }
+  
+  function formatDDMMYYYY(dateString) {
+  if (!dateString) return "";
+  const d = new Date(dateString);
+  const day = String(d.getDate()).padStart(2, "0");
+  const month = String(d.getMonth() + 1).padStart(2, "0");
+  const year = d.getFullYear();
+  return `${day}-${month}-${year}`;
+}
 
   const now = new Date();
 
@@ -23,20 +32,29 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
 
     const data = {
-      formId: formId,
-      tanggal: document.getElementById("todayDate").value,
-      nik: document.getElementById("nik").value,
-      nama: document.getElementById("nama").value,
-      hp: document.getElementById("hp").value,
-      email: document.getElementById("email").value,
-      jumlah: document.getElementById("jumlah").value,
-      mulai: document.getElementById("mulai").value,
-      akhir: document.getElementById("akhir").value,
-      kembali: document.getElementById("kembali").value,
-      alasan: document.getElementById("alasan").value,
-      atasan1: document.getElementById("atasan1").value,
-      atasan2: document.getElementById("atasan2").value
-    };
+  formId: formId,
+  tanggal: formatDDMMYYYY(
+  document.getElementById("todayDate").value
+  ),
+  nik: document.getElementById("nik").value,
+  nama: document.getElementById("nama").value,
+  hp: document.getElementById("hp").value,
+  email: document.getElementById("email").value,
+  jumlah: document.getElementById("jumlah").value,
+  mulai: formatDDMMYYYY(
+    document.getElementById("mulai").value
+  ),
+  akhir: formatDDMMYYYY(
+    document.getElementById("akhir").value
+  ),
+  kembali: formatDDMMYYYY(
+    document.getElementById("kembali").value
+  ),
+  alasan: document.getElementById("alasan").value,
+  atasan1: document.getElementById("atasan1").value,
+  atasan2: document.getElementById("atasan2").value
+};
+
 
     fetch("https://script.google.com/macros/s/AKfycbyEzWVoPABcgp9gnI2qO7t0XXuoD8-RgsusRsUzCNTK-XUiEsLlQn08aLEWT2eWc5pt/exec", {
       method: "POST",
