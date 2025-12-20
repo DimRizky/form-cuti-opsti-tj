@@ -55,6 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
   atasan2: document.getElementById("atasan2").value
 };
 
+    console.log("DATA DIKIRIM KE SERVER:", data)
 
     fetch("https://script.google.com/macros/s/AKfycbyEzWVoPABcgp9gnI2qO7t0XXuoD8-RgsusRsUzCNTK-XUiEsLlQn08aLEWT2eWc5pt/exec", {
       method: "POST",
