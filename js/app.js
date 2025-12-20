@@ -4,13 +4,14 @@ document.addEventListener("DOMContentLoaded", () => {
     return num.toString().padStart(2, "0");
   }
   
-  function formatDDMMYYYY(dateString) {
-  if (!dateString) return "";
-  const d = new Date(dateString);
-  const day = String(d.getDate()).padStart(2, "0");
-  const month = String(d.getMonth() + 1).padStart(2, "0");
-  const year = d.getFullYear();
-  return `${day}-${month}-${year}`;
+  const todayISO = now.toISOString().split("T")[0];
+
+// hidden (untuk logic)
+document.getElementById("todayDate").value = todayISO;
+
+// tampilan user
+document.getElementById("todayDateView").value =
+  formatDDMMYYYY(todayISO);
 }
 
   const now = new Date();
