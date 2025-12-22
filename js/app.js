@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
       atasan2: document.getElementById("atasan2").value
     };
 
-    fetch("https://script.google.com/macros/s/AKfycbyEzWVoPABcgp9gnI2qO7t0XXuoD8-RgsusRsUzCNTK-XUiEsLlQn08aLEWT2eWc5pt/exec", {
+    fetch("https://script.google.com/macros/s/AKfycbw5AhF5iOcOtHwRlN6K0irL1UHyLKvUH-sf70mGjb3Ksu5dH2sCEJ5a0A_-KnXNs0AM/exec", {
       method: "POST",
       body: JSON.stringify(data)
     })
